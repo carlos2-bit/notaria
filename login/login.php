@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="img/logo.png">
 </head>
-    //comooooo esta el ingeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-    //dale barronski como andas ehhhhhhhhhhhhhhhhhhhhhhhh
-    //no se me agüiteeeeeeeeeeeeeeeeee
+//comooooo esta el ingeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+//dale barronski como andas ehhhhhhhhhhhhhhhhhhhhhhhh
+//no se me agüiteeeeeeeeeeeeeeeeee
 
 <body>
     <main>

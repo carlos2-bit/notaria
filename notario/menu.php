@@ -13,6 +13,8 @@
     session_destroy();*/
 ?>
 
+//soy el jefe de jefes señores me respetan a todos niveles
+
 <!DOCTYPE html>
 <html lang="es">
 

@@ -1,9 +1,6 @@
-<?php
-// Datos del servidor
-$host = "localhost";
-$user = "root";
-$pass = "";
-$datab = "notarie";
+<?
+
+include 'conexion_be.php';
 
 session_start();
 
@@ -17,10 +14,10 @@ $consulta_escritura = "SELECT MAX(escritura) AS max_escritura FROM expedientes";
 $resultado_escritura = mysqli_query($connection, $consulta_escritura);
 
 if ($resultado_escritura) {
-    $fila_escritura = mysqli_fetch_assoc($resultado_escritura);
-    if ($fila_escritura['max_escritura']) {
-        $escritura = $fila_escritura['max_escritura'] + 1;
-    }
+$fila_escritura = mysqli_fetch_assoc($resultado_escritura);
+if ($fila_escritura['max_escritura']) {
+$escritura = $fila_escritura['max_escritura'] + 1;
+}
 }
 
 // Verifica si el número de escritura ya existe
@@ -29,51 +26,56 @@ $resultado_verificacion = mysqli_query($connection, $verificar_escritura);
 
 // Estilos CSS para centrar el contenido
 echo '<style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #f4f4f4;
-        font-family: "Georgia", serif;
-    }
-    .container {
-        background-color: #fdfdfd;
-        border: 1px solid #ddd;
-        padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        max-width: 500px;
-    }
-    h3 {
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
-    .success {
-        color: #002147;
-    }
-    .error {
-        color: #d9534f;
-    }
-    a {
-        display: inline-block;
-        margin-top: 20px;
-        background-color: #002147;
-        color: #f9f9f9;
-        padding: 12px 20px;
-        text-decoration: none;
-        font-size: 18px;
-        border-radius: 5px;
-    }
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+    font-family: "Georgia", serif;
+}
+
+.container {
+    background-color: #fdfdfd;
+    border: 1px solid #ddd;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.success {
+    color: #002147;
+}
+
+.error {
+    color: #d9534f;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #002147;
+    color: #f9f9f9;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+}
 </style>';
 
 echo '<div class="container">';
 
-if (mysqli_num_rows($resultado_verificacion) > 0) {
+    if (mysqli_num_rows($resultado_verificacion) > 0) {
     echo '<h3 class="error">Error: El número de escritura ya existe. Por favor, intenta nuevamente.</h3>';
-} else {
+    } else {
     // Inserción de datos si el número de escritura no se repite
     $comparecientes = isset($_POST["comparecientes"]) ? $_POST["comparecientes"] : null;
     $acreedor = isset($_POST["acreedor"]) ? $_POST["acreedor"] : null;
@@ -89,37 +91,23 @@ if (mysqli_num_rows($resultado_verificacion) > 0) {
     $done_by = $_SESSION['how'];
 
     // Insertamos los datos en la tabla correspondiente
-    $instruccion_SQL = "INSERT INTO expedientes (escritura, comparecientes, acreedor, acto, factura, honorario, fechaUIF, fechaFirma, fechaTraslado, entregaGestor, fechaIngresoRPP, fechaSalidaRPP, done_by) 
-                        VALUES ('$escritura', '$comparecientes', '$acreedor', '$acto', '$factura', '$honorario', '$fechaUIF', '$fechaFirma', '$fechaTraslado', '$entregaGestor', '$fechaIngresoRPP', '$fechaSalidaRPP','$done_by')";
+    $instruccion_SQL = "INSERT INTO expedientes (escritura, comparecientes, acreedor, acto, factura, honorario,
+    fechaUIF, fechaFirma, fechaTraslado, entregaGestor, fechaIngresoRPP, fechaSalidaRPP, done_by)
+    VALUES ('$escritura', '$comparecientes', '$acreedor', '$acto', '$factura', '$honorario', '$fechaUIF', '$fechaFirma',
+    '$fechaTraslado', '$entregaGestor', '$fechaIngresoRPP', '$fechaSalidaRPP','$done_by')";
 
     if (mysqli_query($connection, $instruccion_SQL)) {
-        $escritura_id = mysqli_insert_id($connection);
+    $escritura_id = mysqli_insert_id($connection);
 
-        for ($i = 1; $i <= $_POST['comparecientes']; $i++) {
-            $nombre = $_POST["comparecienteNombre$i"];
-            $rol = $_POST["comparecienteRol$i"];
-
-            $sql_compareciente = "INSERT INTO comparecientes (escritura_id, nombre, rol)
-                                  VALUES ('$escritura_id', '$nombre', '$rol')";
-            mysqli_query($connection, $sql_compareciente);
-        }
-
-        echo '<h3 class="success">Expediente Registrado Exitosamente.</h3>';
-    } else {
-        echo '<h3 class="error">Error: ' . $instruccion_SQL . '<br>' . mysqli_error($connection) . '</h3>';
-    }
-}
-
-?>
+    for ($i = 1; $i <= $_POST['comparecientes']; $i++) { $nombre=$_POST["comparecienteNombre$i"];
+        $rol=$_POST["comparecienteRol$i"]; $sql_compareciente="INSERT INTO comparecientes (escritura_id, nombre, rol)
+                                  VALUES ('$escritura_id', '$nombre', '$rol')" ; mysqli_query($connection,
+        $sql_compareciente); } echo '<h3 class="success">Expediente Registrado Exitosamente.</h3>' ; } else {
+        echo '<h3 class="error">Error: ' . $instruccion_SQL . '<br>' . mysqli_error($connection) . '</h3>' ; } } ?>
 
 <?php
-// Datos del servidor
-$host = "localhost";
-$user = "root";
-$pass = "";
-$datab = "notarie";
 
-include 'conexion_be.php';
+include 'conexion_db.php';
 
 // Mostramos el último expediente registrado
 $consulta = "
@@ -140,8 +128,6 @@ if (!$result) {
     }
 }
 ?>
-
-
 
 <?php
 // Cerrar la conexión

@@ -5,28 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Expedientes</title>
-    <link rel="stylesheet" href="../estilos_tabla.css">
-    <style>
-    .button-container {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
-
-    .button-container a {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #002147;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 14px;
-    }
-
-    .button-container a:hover {
-        background-color: #002141;
-    }
-    </style>
+    <link rel="stylesheet" href="styles_tabla.css">
 </head>
 
 <body>
@@ -34,13 +13,8 @@
     <h3>Lista de Expedientes</h3>
 
     <?php
-    // Datos del servidor
-    $host = "localhost";
-    $user = "root";
-    $pass = "";
-    $datab = "notarie";
 
-    include 'conexion_be.php';
+    include 'conexion_db.php';
 
     // Mostramos los datos registrados con nombres de comparecientes
     $consulta = "

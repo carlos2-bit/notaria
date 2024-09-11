@@ -1,8 +1,11 @@
-<?php
+esta pagina es para corrobarar que no sea el notario, primero checa que sea el notario
+si no es asi entonces valida que el usario y contraseña esten rtegsitrados en la DB
 
+
+<?php
 session_start();
 
-include 'conexion_be.php';
+include 'conexion_db.php';
 
 $user = $_POST['user'];
 $contra = $_POST['contra'];

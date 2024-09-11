@@ -1,8 +1,5 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$datab = "notarie";
+require 'conexion_db.php';
 
 $connection = mysqli_connect($host, $user, $pass, $datab);
 

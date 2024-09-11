@@ -1,5 +1,5 @@
 <?php
-require 'conexion_be.php';
+require 'conexion_db.php';
 
 if (isset($_POST['query'])) {
     $busqueda = $conexion->real_escape_string($_POST['query']);

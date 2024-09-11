@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles_login.css">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="">
+    <link rel="icon" href="user-not\img\logo.png">
 </head>
 
 <body>

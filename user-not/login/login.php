@@ -5,12 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Login y Resistro</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="styles_login.css">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="img/logo.png">
 </head>
-DUSAFKBDFKJSÑD
 
 <body>
     <main>
@@ -55,7 +54,7 @@ DUSAFKBDFKJSÑD
     </main>
 
 
-    <script src="script.js" async defer></script>
+    <script src="script_login.js" async defer></script>
 </body>
 
 </html>
